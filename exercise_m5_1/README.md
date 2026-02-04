@@ -9,7 +9,7 @@ This project implements a Student Course Management System using Java and MySQL.
 
 ## Configuration
 The database connection settings are located in `src/util/DatabaseManager.java`.
-If you have a password for the MySQL server, you will need to update the connection string in `DatabaseManager.java`.
+If you have a new database name, username, or password, you will need to update the connection string in `DatabaseManager.java`.
 
 ## Database Initialization
 The application automatically creates the database `m5_1_db` and necessary tables if they do not exist, using the script `init_db.sql`.
