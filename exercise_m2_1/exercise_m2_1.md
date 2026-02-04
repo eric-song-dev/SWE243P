@@ -12,6 +12,8 @@ FROM vendors
 ORDER BY vendor_contact_last_name, vendor_contact_first_name;
 ```
 
+The default sort order is ASC (ascending).
+
 ## Exercise 9
 Write a statement that returns a column named `full_name` (combining last name and first name in the format "Doe, John"). Sort by last name and then first name. Filter for contacts whose last name begins with A, B, C, or E.
 
@@ -24,6 +26,10 @@ WHERE vendor_contact_last_name LIKE 'A%'
    OR vendor_contact_last_name LIKE 'E%'
 ORDER BY vendor_contact_last_name, vendor_contact_first_name;
 ```
+
+The `%` wildcard matches zero or more characters. 
+
+`CONCAT()` joins multiple strings together.
 
 ## Exercise 10
 Write a statement returning `Due Date`, `Invoice Total`, `10%`, and `Plus 10%`. Filter for invoice totals between 500 and 1000 inclusive. Sort by `invoice_due_date` descending.
