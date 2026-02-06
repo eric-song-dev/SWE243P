@@ -136,8 +136,6 @@ The requirement asks for a combined result set derived from two different condit
 
 Create two separate `SELECT` queries: one filtering for `vendor_state = 'CA'` and hardcoding the state column as 'CA', and another for `vendor_state <> 'CA'` hardcoding 'Outside CA'. Combine them with `UNION`.
 
-Here is a short summary of the MySQL **UNION** operator in Markdown.
-
 > The `UNION` operator is used to **combine** the result sets of two or more `SELECT` statements into a single result set.
 
 * **Vertical Combination:** Unlike `JOIN` (which combines columns horizontally), `UNION` stacks results on top of each other (vertically).

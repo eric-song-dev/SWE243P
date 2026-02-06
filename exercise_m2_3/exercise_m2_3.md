@@ -111,6 +111,15 @@ WHERE vendor_id IN (
 );
 ```
 
+or 
+
+```sql
+UPDATE invoices i
+JOIN vendors v ON i.vendor_id = v.vendor_id
+SET i.terms_id = 2
+WHERE v.default_terms_id = 2;
+```
+
 A subquery identifies all `vendor_id`s where the `default_terms_id` is 2. The main `UPDATE` statement then applies the change to all invoices linked to those vendors.
 
 Here is a short summary of the MySQL **IN** operator in Markdown.

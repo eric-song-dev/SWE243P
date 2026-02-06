@@ -103,7 +103,41 @@ erDiagram
     }
 ```
 
+or
+
+```mermaid
+erDiagram
+    MEMBERS ||--|{ GROUP_MEMBERS : "joins"
+    GROUPS ||--|{ GROUP_MEMBERS : "contains"
+
+    MEMBERS {
+        int member_id PK
+        varchar email_address
+        varchar first_name
+        varchar last_name
+    }
+    GROUPS {
+        int group_id PK
+        varchar group_name
+    }
+    GROUP_MEMBERS {
+        int id PK
+        int member_id FK
+        int group_id FK
+    }
+```
+
 ### Explanation
 - **Many-to-Many Relationship**: Members can belonging to multiple groups, and groups can have multiple members. This is a classic Many-to-Many (`M:N`) relationship.
 - **Junction Table**: Relational databases cannot directly model M:N relationships. To resolve this, an intermediate "junction" or "associative" entity `GROUP_MEMBERS` was created. It works by breaking down the complex many-to-many relationship into two separate, manageable one-to-many relationships.
 - **Composite Primary Key**: The `GROUP_MEMBERS` table typically uses a composite primary key made up of both `member_id` and `group_id`, ensuring that a specific member cannot join the same specific group more than once (preventing duplicates).
+
+### Primary Key Design: Surrogate Key vs Composite Key
+
+| Aspect | Surrogate Key (`enrollment_id`) | Composite Key (`student_id + course_id`) |
+|--------|--------------------------------|------------------------------------------|
+| **Simplicity** | Extra column | More concise schema |
+| **FK References** | Single column | Must reference two columns |
+| **ORM Support** | Better compatibility | Requires composite key class |
+| **Index Size** | Smaller (single INT) | Larger (two INTs) |
+| **Re-enrollment** | Supports multiple enrollments | One per student-course pair |
